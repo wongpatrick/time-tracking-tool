@@ -87,3 +87,6 @@ Since this take-home challenge was time boxed for 3 hours or less, there are thi
 * Refactor the tests models as well.
 * Refactor some of the code for readability such as
     * Grouping shifts by employee ID into it's own function and writing tests
+    * Part of the CalculateEmployeeSummary could be factored out into it's own function for readiability
+        * i.e. Checking if we need a new entry for EmployeeSummary if it's a start of a new week
+* Normally I would add go vendor files if this was not a challenge, but I would add vendor files into github.
