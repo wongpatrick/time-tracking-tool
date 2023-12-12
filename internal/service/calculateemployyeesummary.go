@@ -56,7 +56,5 @@ func calculateEmployeeSummary(employeeID int64, shifts []model.Shift, invalidShi
 }
 
 func getStartOfWeek(t time.Time) time.Time {
-	_, offset := t.Zone()
-
-	return t.Add(-time.Duration(t.Weekday())*24*time.Hour - time.Duration(offset)*time.Second)
+	return t.Add(-time.Duration(t.Weekday()) * 24 * time.Hour)
 }
