@@ -12,8 +12,7 @@ func ProcessShifts(shifts []model.Shift) []model.EmployeeSummary {
 	// Group shifts by employee ID
 	for _, shift := range shifts {
 		// Check if shift crosses midnight of Sunday
-		if shift.StartTime.Weekday() == time.Saturday && shift.EndTime.Weekday() == time.Sunday {
-
+		if shift.EndTime.After(getStartOfWeek(shift.StartTime).AddDate(0, 0, 7)) {
 			// Splits shift into two shifts, one for Saturday and one for Sunday
 			employeeMap[shift.EmployeeID] = append(employeeMap[shift.EmployeeID], model.Shift{
 				ShiftID:    shift.ShiftID,

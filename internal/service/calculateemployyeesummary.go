@@ -1,7 +1,7 @@
 package service
 
 import (
-	"log"
+	"fmt"
 	"sort"
 	"time"
 
@@ -14,8 +14,8 @@ func calculateEmployeeSummary(employeeID int64, shifts []model.Shift, invalidShi
 	summary := []model.EmployeeSummary{}
 	j := -1
 
-	sort.Slice(shifts[:], func(i, j int) bool {
-		return shifts[i].StartTime.Before(shifts[j].StartTime)
+	sort.Slice(shifts[:], func(i, k int) bool {
+		return shifts[i].StartTime.Before(shifts[k].StartTime)
 	})
 
 	for i, shift := range shifts {
@@ -26,7 +26,7 @@ func calculateEmployeeSummary(employeeID int64, shifts []model.Shift, invalidShi
 		if len(summary) > 0 {
 			startOfWeekTime, err = time.Parse("2006-01-02", summary[j].StartOfWeek)
 			if err != nil {
-				log.Fatal(err)
+				fmt.Println(err)
 			}
 		}
 

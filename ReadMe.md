@@ -84,9 +84,16 @@ Since this take-home challenge was time boxed for 3 hours or less, there are thi
 * Put a config file indicating where the dataset.json is located
 * Write more tests cases to cover some edge cases, especially the one in the bonus
     * Cases like if values in JSON were missing
-* Refactor the tests models as well.
+* Refactor the tests models since a few seems repetitive
+* Refactor logic
+    * After getting most of the code done, I realized that I could have optimized the sorting done in processshift.go could be more optimized for later. I could be adding an extra bit to the key with start of the week so I could reduce the number of time I filter in calculateemployeesummary.go
+        * this would essentially eliminate the sorting on /calculateemployyeesummary.go#L17
+        * this would reduce the if statement on /calculateemployyeesummary.go#L26 & /calculateemployyeesummary.go#L33
+    * I feel lilke findInvalidShift function could be optimized but currently it is 
 * Refactor some of the code for readability such as
     * Grouping shifts by employee ID into it's own function and writing tests
     * Part of the CalculateEmployeeSummary could be factored out into it's own function for readiability
         * i.e. Checking if we need a new entry for EmployeeSummary if it's a start of a new week
-* Normally I would add go vendor files if this was not a challenge, but I would add vendor files into github.
+
+## Extra Notes
+* Normally I would add `go vendor` files into the repo if this was not a challenge, but for file readability it was left out.

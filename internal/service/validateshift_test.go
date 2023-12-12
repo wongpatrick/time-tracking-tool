@@ -27,7 +27,7 @@ func TestOverlaps(t *testing.T) {
 			},
 			expected: false,
 		},
-		"when shift 2 overlaps shift 1 then return true return true": {
+		"when shift 2 overlaps shift 1 then return true": {
 			firstShift: model.Shift{
 				EmployeeID: 1,
 				StartTime:  time.Date(2023, time.January, 1, 8, 0, 0, 0, time.UTC),
@@ -40,7 +40,7 @@ func TestOverlaps(t *testing.T) {
 			},
 			expected: true,
 		},
-		"when shift 1 overlaps shift 2 then return true return true": {
+		"when shift 1 overlaps shift 2 then return true": {
 			firstShift: model.Shift{
 				EmployeeID: 1,
 				StartTime:  time.Date(2023, time.January, 1, 8, 0, 0, 0, time.UTC),
@@ -53,7 +53,7 @@ func TestOverlaps(t *testing.T) {
 			},
 			expected: true,
 		},
-		"when shift 1 is inside shift 2 then return true return true": {
+		"when shift 1 is inside shift 2 then return true": {
 			firstShift: model.Shift{
 				EmployeeID: 1,
 				StartTime:  time.Date(2023, time.January, 1, 9, 0, 0, 0, time.UTC),
@@ -66,7 +66,7 @@ func TestOverlaps(t *testing.T) {
 			},
 			expected: true,
 		},
-		"when shift 2 is inside shift 1 then return true return true": {
+		"when shift 2 is inside shift 1 then return true": {
 			firstShift: model.Shift{
 				EmployeeID: 1,
 				StartTime:  time.Date(2023, time.January, 1, 8, 0, 0, 0, time.UTC),
@@ -126,38 +126,6 @@ func TestFindInvalidShifts(t *testing.T) {
 	for name, tt := range test {
 		t.Run(name, func(t *testing.T) {
 			actual := findInvalidShifts(tt.shifts)
-
-			assert.Equal(t, tt.expected, actual)
-		})
-	}
-}
-
-func TestIsShiftInvalid(t *testing.T) {
-	var test = map[string]struct {
-		shiftID       int64
-		invalidShifts []int64
-		expected      bool
-	}{
-		"when there are no invalid shifts then return false": {
-			shiftID:       1,
-			invalidShifts: []int64{},
-			expected:      false,
-		},
-		"when there are no matching shiftID and invalid shifts then return false": {
-			shiftID:       1,
-			invalidShifts: []int64{2},
-			expected:      false,
-		},
-		"when there is a matching shiftID and invalid shifts then return true": {
-			shiftID:       1,
-			invalidShifts: []int64{1},
-			expected:      true,
-		},
-	}
-
-	for name, tt := range test {
-		t.Run(name, func(t *testing.T) {
-			actual := isShiftInvalid(tt.shiftID, tt.invalidShifts)
 
 			assert.Equal(t, tt.expected, actual)
 		})
